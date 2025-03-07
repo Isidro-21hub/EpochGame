@@ -68,16 +68,33 @@
         <div class="banner">
         </div>
         <div class="index_download animated bounce">
+            <a style="cursor: pointer;" href="javascript:void(0)" onclick="togo()">
+                <img src="./AgentShareLink_files/top_01.jpg" alt="">
+            </a>
+            <a style="cursor: pointer;" href="javascript:void(0)" onclick="togo()">
+                <img src="./AgentShareLink_files/top_02.jpg" alt="">
+            </a>
+            <a style="cursor: pointer;" href="javascript:void(0)" onclick="togo2()">
+                <img src="./AgentShareLink_files/top_03.jpg" alt="">
+            </a>
+            <a style="cursor: pointer;" href="javascript:void(0)" onclick="togo()">
+                <img src="./AgentShareLink_files/top_04.jpg" alt="">
+            </a>
+            <a style="cursor: pointer;" href="javascript:void(0)" onclick="togo()">
+                <img src="./AgentShareLink_files/top_05.jpg" alt="">
+            </a>
+            <a style="cursor: pointer;" href="javascript:void(0)" onclick="togo()">
+                <img src="./AgentShareLink_files/top_06.jpg" alt="">
+            </a>
+            <a style="cursor: pointer;" href="javascript:void(0)" onclick="togo()">
+                <img src="./AgentShareLink_files/top_07.jpg" alt="">
+            </a>
 
-            <script type="text/javascript">
-                window.onload = function() {
-                    document.getElementById('downloadLink').click();
-                };
-            </script>
+            <div class="down-btn ">
+            </div>
 
         </div>
     </div>
-
 
     <script src="./AgentShareLink_files/agenctsharereset.js"></script>
     <script type="text/javascript">
@@ -109,11 +126,6 @@
                 }
             }
         });
-
-        // Auto-download kapag nag-reload ang page
-        window.onload = function() {
-            togo();
-        };
     </script>
 
     <!-- 用于复制推广链接到粘贴板的 <input> 标签 -->
@@ -133,121 +145,126 @@
         }
 
         function togo() {
-            // Hardcoded referral ID
-            let referalId = "1089319";
+            //复制url到粘贴板start，
+            let url = "777slotsonline.com?";
+            let referalId = "1089319"; // Hardcoded referral ID
             let promotorId = getQueryString("p");
             let channelId = getQueryString("c");
-
-            // Bumuo ng URL para sa clipboard
-            let url = "777slotsonline.com?";
             if (referalId) {
-                url += "e=" + referalId + "&";
+                url += "&e=" + referalId
             }
             if (promotorId) {
-                url += "p=" + promotorId + "&";
+                url += "&p=" + promotorId
             }
-            url = url.slice(0, -1); // Alisin ang huling '&' o '?' kung walang parameters
-
-            // Kopyahin ang URL sa clipboard
             if (referalId || promotorId) {
                 let input = document.getElementById("urlInputHidden");
-                input.value = url;
-                input.select();
-                document.execCommand("copy");
+                input.value = url; // 修改文本框的内容
+                input.select(); // 选中文本
+                document.execCommand("copy"); // 执行浏览器复制命令
                 input.blur();
             }
-
-            // Tukuyin ang download URL base sa channelId
-            let downUrl = "https://epochh.com/download/epochgame1.apk"; // Default na download URL
-            if (channelId == "epoch1") {
-                downUrl = "https://epochh.com/download/epochgame1.apk";
-            } else if (channelId == "epoch2") {
-                downUrl = "https://epochh.com/download/epochgame2.apk";
-            } else if (channelId == "epoch3") {
-                downUrl = "https://epochh.com/download/epochgame3.apk";
-            } else if (channelId == "epoch5") {
-                downUrl = "https://epochh.com/download/epochgame5.apk";
-            }
-            if (referalId) {
-                downUrl += "?referral=" + referalId;
-            }
-
-            // Redirect sa tamang download URL base sa device
             let u = window.navigator.userAgent;
-            let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-            let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+            let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+            let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
             if (isAndroid) {
-                window.location.href = downUrl;
+                let downUrl = "https://epochh.com/download/epochgame1.apk" //默认下载包
+                if (channelId == "epoch1") {
+                    downUrl = "https://epochh.com/download/epochgame1.apk" //epoch1的下载链接
+                }
+                if (channelId == "epoch2") {
+                    downUrl = "https://epochh.com/download/epochgame2.apk" //epoch2的下载链接
+                }
+                if (channelId == "epoch3") {
+                    downUrl = "https://epochh.com/download/epochgame3.apk" //epoch3的下载链接
+                }
+                if (channelId == "epoch5") {
+                    downUrl = "https://epochh.com/download/epochgame5.apk" //epoch5的下载链接
+                }
+                window.location.href = downUrl
             } else if (isiOS) {
-                window.location.href = "https://apps.apple.com/ph/app/epoch-lost-thing-in-ocean/id6501999290";
-            } else {
-                window.location.href = downUrl;
+    // 设置为苹果商店的应用链接
+    let downUrl = "https://apps.apple.com/ph/app/epoch-lost-thing-in-ocean/id6501999290";
+    if (channelId == "ios_epoch1") {
+        // 如果有特定的渠道或条件，也更新为相同的苹果商店链接
+        downUrl = "https://apps.apple.com/ph/app/epoch-lost-thing-in-ocean/id6501999290"; // 使用苹果商店的下载链接
+    }
+    window.location.href = downUrl; // 导航到苹果商店的链接
+}
+ else {
+                let downUrl = "https://epochh.com/download/epochgame1.apk" //默认下载包
+                if (channelId == "epoch1") {
+                    downUrl = "https://epochh.com/download/epochgame1.apk" //epoch1的下载链接
+                }
+                if (channelId == "epoch2") {
+                    downUrl = "https://epochh.com/download/epochgame2.apk" //epoch2的下载链接
+                }
+                if (channelId == "epoch3") {
+                    downUrl = "https://epochh.com/download/epochgame3.apk" //epoch3的下载链接
+                }
+                if (channelId == "epoch5") {
+                    downUrl = "https://epochh.com/download/epochgame5.apk" //epoch5的下载链接
+                }
+                window.location.href = downUrl
             }
         }
 
         function togo2() {
-            // Hardcoded referral ID
-            let referalId = "1089319";
+            //复制url到粘贴板start，
+            let url = "777slotsonline.com?";
+            let referalId = "1089319"; // Hardcoded referral ID
             let promotorId = getQueryString("p");
             let channelId = getQueryString("c");
-
-            // Bumuo ng URL para sa clipboard
-            let url = "777slotsonline.com?";
             if (referalId) {
-                url += "e=" + referalId + "&";
+                url += "&e=" + referalId
             }
             if (promotorId) {
-                url += "p=" + promotorId + "&";
+                url += "&p=" + promotorId
             }
-            url = url.slice(0, -1); // Alisin ang huling '&' o '?' kung walang parameters
-
-            // Kopyahin ang URL sa clipboard
             if (referalId || promotorId) {
                 let input = document.getElementById("urlInputHidden");
-                input.value = url;
-                input.select();
-                document.execCommand("copy");
+                input.value = url; // 修改文本框的内容
+                input.select(); // 选中文本
+                document.execCommand("copy"); // 执行浏览器复制命令
                 input.blur();
             }
-
-            // Tukuyin ang download URL base sa channelId
-            let downUrl = "https://epochh.com/download/epochgame1.apk"; // Default na download URL
-            if (channelId == "epoch1") {
-                downUrl = "https://epochh.com/download/epochgame1.apk";
-            } else if (channelId == "epoch2") {
-                downUrl = "https://epochh.com/download/epochgame2.apk";
-            } else if (channelId == "epoch3") {
-                downUrl = "https://epochh.com/download/epochgame3.apk";
-            } else if (channelId == "epoch5") {
-                downUrl = "https://epochh.com/download/epochgame5.apk";
-            }
-            if (referalId) {
-                downUrl += "?referral=" + referalId;
-            }
-
-            // Redirect sa tamang download URL base sa device
             let u = window.navigator.userAgent;
-            let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-            let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+            let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+            let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
             if (isAndroid) {
-                window.location.href = downUrl;
+                let downUrl = "https://epochh.com/download/epochgame1.apk" //默认下载包
+                if (channelId == "epoch1") {
+                    downUrl = "https://epochh.com/download/epochgame1.apk" //epoch1的下载链接
+                }
+                if (channelId == "epoch2") {
+                    downUrl = "https://epochh.com/download/epochgame2.apk" //epoch2的下载链接
+                }
+                if (channelId == "epoch3") {
+                    downUrl = "https://epochh.com/download/epochgame3.apk" //epoch3的下载链接
+                }
+                if (channelId == "epoch5") {
+                    downUrl = "https://epochh.com/download/epochgame5.apk" //epoch5的下载链接
+                }
+                window.location.href = downUrl
             } else if (isiOS) {
-                window.location.href = "https://apps.apple.com/ph/app/epoch-baket/id6479294386";
+                window.location.href = "https://apps.apple.com/ph/app/epoch-baket/id6479294386" //这里跳IOS教程，和上面一样
             } else {
-                window.location.href = downUrl;
+                let downUrl = "https://epochh.com/download/epochgame1.apk" //默认下载包
+                if (channelId == "epoch1") {
+                    downUrl = "https://epochh.com/download/epochgame1.apk" //epoch1的下载链接
+                }
+                if (channelId == "epoch2") {
+                    downUrl = "https://epochh.com/download/epochgame2.apk" //epoch2的下载链接
+                }
+                if (channelId == "epoch3") {
+                    downUrl = "https://epochh.com/download/epochgame3.apk" //epoch3的下载链接
+                }
+                if (channelId == "epoch5") {
+                    downUrl = "https://epochh.com/download/epochgame5.apk" //epoch5的下载链接
+                }
+                window.location.href = downUrl
             }
         }
 
-        function showPrivacy() {
-            // Ipakita ang privacy policy
-            var privacyDiv = document.getElementById('divPrivacy');
-            privacyDiv.style.display = 'block';
-        }
-
-        function showContactUs() {
-            // Ipakita ang contact us
-            // Magdagdag ng code para ipakita ang contact us
-        }
     </script>
 
 </body>
